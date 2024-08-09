@@ -4,7 +4,7 @@ import 'package:morflutter/display_info/databaseLink.dart';
 import 'package:morflutter/display_info/sensorData.dart';
 import 'package:morflutter/starting_pages/tests/tabSendData.dart';
 import 'package:morflutter/starting_pages/ui/homepage.dart';
-import 'package:morflutter/starting_pages/ui/intro_screens/onboard_screen.dart';
+import 'package:morflutter/starting_pages/ui/intro_screens/onboardScreen.dart';
 
 class Sendsensordata extends StatefulWidget {
   const Sendsensordata({super.key});
@@ -50,7 +50,7 @@ class _SendsensordataState extends State<Sendsensordata> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => OnBoardingScreen()));
+                            builder: (context) => OnboardingScreen()));
                   },
                   icon: Icon(
                     Icons.home_filled,

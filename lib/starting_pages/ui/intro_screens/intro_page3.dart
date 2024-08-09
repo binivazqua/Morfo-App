@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
 
-class IntroPage1 extends StatelessWidget {
-  const IntroPage1({super.key});
+class IntroPage3 extends StatelessWidget {
+  const IntroPage3({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: draculaPurple);
+    return Container(
+      color: lilyPurple,
+    );
   }
 }
