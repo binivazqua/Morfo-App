@@ -136,7 +136,7 @@ class MorfoLoginPageState extends State<MorfoLoginPage> {
                       child: Text(
                         'Registro',
                         style: TextStyle(
-                            color: Colors.white, fontFamily: 'Lausane650'),
+                            color: lilyPurple, fontFamily: 'Lausane650'),
                       ),
                     ),
                   )
