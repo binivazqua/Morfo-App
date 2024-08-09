@@ -6,6 +6,26 @@ class IntroPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: draculaPurple);
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+              colors: [darkPeriwinkle, lilyPurple, draculaPurple])),
+      // color: morfoWhite,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image(
+              width: 200,
+              image: AssetImage(
+                  'lib/design/logos/cuadrado_blanco_trippypurple-removebg-preview.png')),
+          Text(
+            'Welcome to MORFO!',
+            style: TextStyle(color: morfoBlack, fontFamily: 'Lausane'),
+          ),
+        ],
+      ),
+    );
   }
 }
