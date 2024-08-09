@@ -10,7 +10,7 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        PageView(children: [
+        PageView(controller: _pageController, children: [
           Container(
             color: lilyPurple,
           ),
@@ -18,7 +18,7 @@ class OnBoardingScreen extends StatelessWidget {
           Container(color: draculaPurple),
         ]),
         Container(
-            alignment: Alignment(0, 0),
+            alignment: Alignment(0, 0.65),
             child: SmoothPageIndicator(controller: _pageController, count: 3)),
       ]),
 
