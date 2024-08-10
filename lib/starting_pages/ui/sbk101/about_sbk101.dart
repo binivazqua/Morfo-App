@@ -8,6 +8,9 @@ class AboutSbk101 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(0, 0, 0, 0),
+      ),
       body: Container(
         child: Center(
           child: Column(

@@ -6,6 +6,8 @@ import 'package:morflutter/starting_pages/auth/loggedPage.dart';
 import 'package:morflutter/starting_pages/auth/loginPage.dart';
 import 'package:morflutter/starting_pages/tests/sendAndFetch.dart';
 import 'package:morflutter/starting_pages/ui/homepage.dart';
+import 'package:morflutter/starting_pages/ui/intro_screens/onboardScreen.dart';
+import 'package:morflutter/starting_pages/ui/sbk101/about_sbk101.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -18,10 +20,10 @@ class MainPage extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 print('SIGNED IN');
-                return Sendsensordata();
+                return AboutSbk101();
               } else {
                 print('NOT SIGNED IN');
-                return AuthPage();
+                return OnboardingScreen();
               }
             }));
   }
