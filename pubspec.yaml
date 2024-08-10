@@ -13,6 +13,7 @@ dependencies:
   fl_chart: ^0.68.0
   flutter:
     sdk: flutter
+  flutter_animate: ^4.5.0
   smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
@@ -38,5 +39,7 @@ flutter:
     - lib/design/logos/cuadrado_blanco_trippypurple-removebg-preview.png
     - lib/design/logos/principal_morado_negro-removebg-preview.png
     - lib/design/logos/rectangular_vino_trippypurplep.png
+    - lib/design/renders/data_vis_morfo.png
+    - lib/design/renders/mantainance.png
 
     

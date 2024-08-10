@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/display_info/databaseLink.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page1.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page2.dart';
@@ -37,7 +38,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 // Skip
                 GestureDetector(
-                  child: Text("Omitir"),
+                  child: Text(
+                    "Omitir",
+                    style: TextStyle(color: morfoWhite),
+                  ),
                   // Go to last page
                   onTap: () {
                     _pageController.jumpToPage(2);
@@ -51,7 +55,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 // Next
                 onLastPage
                     ? GestureDetector(
-                        child: Text("Hecho"),
+                        child: Text(
+                          "Hecho",
+                          style: TextStyle(color: morfoWhite),
+                        ),
                         // go next
                         // Go to last page
                         onTap: () {
@@ -62,7 +69,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         },
                       )
                     : GestureDetector(
-                        child: Text("Siguiente"),
+                        child: Text(
+                          "Siguiente",
+                          style: TextStyle(color: morfoWhite),
+                        ),
                         // go next
                         // Go to last page
                         onTap: () {
