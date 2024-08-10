@@ -6,6 +6,7 @@ import 'package:morflutter/starting_pages/auth/mainPage.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page1.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page2.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page3.dart';
+import 'package:morflutter/starting_pages/ui/sbk101/about_sbk101.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -67,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MainPage()));
+                                  builder: (context) => AboutSbk101()));
                         },
                       )
                     : GestureDetector(

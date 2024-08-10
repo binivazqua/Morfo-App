@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.5.0-169.0.dev <4.0.0'
 
 dependencies:
+  cupertino_battery_indicator: ^1.1.0
   firebase_auth: ^5.1.0
   firebase_core: ^3.1.0
   firebase_database: ^11.0.1
@@ -41,5 +42,7 @@ flutter:
     - lib/design/logos/rectangular_vino_trippypurplep.png
     - lib/design/renders/data_vis_morfo.png
     - lib/design/renders/mantainance.png
+    - lib/design/renders/sbk101.png
+    - lib/design/renders/my_sbk101.png
 
     
