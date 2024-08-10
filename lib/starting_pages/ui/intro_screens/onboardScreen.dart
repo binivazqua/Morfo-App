@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/display_info/databaseLink.dart';
+import 'package:morflutter/starting_pages/auth/loginPage.dart';
+import 'package:morflutter/starting_pages/auth/mainPage.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page1.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page2.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/intro_page3.dart';
@@ -65,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => databaseReadTest()));
+                                  builder: (context) => MainPage()));
                         },
                       )
                     : GestureDetector(
