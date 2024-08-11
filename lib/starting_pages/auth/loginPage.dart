@@ -22,11 +22,16 @@ class MorfoLoginPageState extends State<MorfoLoginPage> {
   final _usernameController = TextEditingController();
 
   // SIGN IN METHOD:
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+  Future<void> signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-    print("FUNCTION DOING ITS THING...");
+        password: _passwordController.text.trim(),
+      );
+      print("User signed in successfully");
+    } catch (e) {
+      print("Failed to sign in: $e");
+    }
   }
 
   // CREATE AN UPDATE USER ID METHOD:
