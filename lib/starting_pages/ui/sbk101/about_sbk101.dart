@@ -1,8 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/starting_pages/ui/sbk101/my_sbk101.dart';
 
 class AboutSbk101 extends StatelessWidget {
+  void LogOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   const AboutSbk101({super.key});
 
   @override
@@ -43,7 +48,12 @@ class AboutSbk101 extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(darkPeriwinkle),
                     shadowColor: WidgetStatePropertyAll(draculaPurple)),
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    LogOut();
+                  },
+                  child: Text('log out'))
             ],
           ),
         ),
