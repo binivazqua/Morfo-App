@@ -11,7 +11,8 @@ import 'package:morflutter/starting_pages/ui/sbk101/about_sbk101.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  OnboardingScreen({super.key});
+  final VoidCallback onFinish;
+  OnboardingScreen({super.key, required this.onFinish});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -66,10 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         // go next
                         // Go to last page
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AuthPage()));
+                          widget.onFinish();
                         },
                       )
                     : GestureDetector(

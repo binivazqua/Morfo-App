@@ -46,12 +46,7 @@ class _SendsensordataState extends State<Sendsensordata> {
               backgroundColor: lilyPurple,
               // go to homepage:
               leading: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OnboardingScreen()));
-                  },
+                  onPressed: () {},
                   icon: Icon(
                     Icons.home_filled,
                     color: draculaPurple,
