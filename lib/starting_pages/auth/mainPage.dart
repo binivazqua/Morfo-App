@@ -72,7 +72,7 @@ class _MainPageState extends State<MainPage> {
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:morflutter/starting_pages/ui/homeNavBar.dart';
+import 'package:morflutter/starting_pages/ui/navigation/homeNavBar.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/onboardScreen.dart';
 import 'package:morflutter/starting_pages/auth/loginPage.dart';
 import 'package:morflutter/starting_pages/auth/registerPage.dart';
