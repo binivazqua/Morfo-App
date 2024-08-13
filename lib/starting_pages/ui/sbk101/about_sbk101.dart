@@ -49,11 +49,13 @@ class AboutSbk101 extends StatelessWidget {
                     backgroundColor: WidgetStatePropertyAll(darkPeriwinkle),
                     shadowColor: WidgetStatePropertyAll(draculaPurple)),
               ),
+
+              /*
               ElevatedButton(
                   onPressed: () {
                     LogOut();
                   },
-                  child: Text('log out'))
+                  child: Text('log out'))*/
             ],
           ),
         ),

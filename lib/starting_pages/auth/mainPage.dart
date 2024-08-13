@@ -72,6 +72,7 @@ class _MainPageState extends State<MainPage> {
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:morflutter/starting_pages/ui/homeNavBar.dart';
 import 'package:morflutter/starting_pages/ui/intro_screens/onboardScreen.dart';
 import 'package:morflutter/starting_pages/auth/loginPage.dart';
 import 'package:morflutter/starting_pages/auth/registerPage.dart';
@@ -121,7 +122,8 @@ class _MainPageState extends State<MainPage> {
                   ? MorfoLoginPage(showRegisterPage: _toggleToRegisterPage)
                   : RegisterPage(showLoginPage: _toggleToLoginPage);
             } else {
-              return AboutSbk101(); // User is authenticated, show the About page
+              //return AboutSbk101(); // User is authenticated, show the About page
+              return MorfoHomeNavBar();
             }
           } else {
             // Show a loading spinner while waiting for the connection state
