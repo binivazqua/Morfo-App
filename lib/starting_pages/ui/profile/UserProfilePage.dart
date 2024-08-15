@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:morflutter/design/constants.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
@@ -17,6 +18,57 @@ class _UserProfilePageState extends State<UserProfilePage> {
               'lib/design/logos/rectangular_vino_trippypurplep.png',
             ),
             width: 120),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hola, Usuario!",
+              style: TextStyle(fontSize: 30),
+            ),
+            SizedBox(height: 20),
+            Container(
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: lilyPurple),
+                    padding: EdgeInsets.all(10),
+                    child: Icon(
+                      Icons.person_2,
+                      color: draculaPurple,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Username"),
+                      Text(
+                        "Prótesis transradial",
+                        style: TextStyle(fontSize: 10, color: Colors.grey[600]),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    width: 155,
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: draculaPurple,
+                      ))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
