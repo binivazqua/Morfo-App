@@ -81,7 +81,39 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
                     itemBuilder: (context, index) {
-                      return helpCenterType();
+                      if (index == 0) {
+                        return helpCenterType(
+                            service: 'Sobre Morfo',
+                            icon: Icon(
+                              Icons.info_rounded,
+                              color: darkPeriwinkle,
+                              size: 80,
+                            ));
+                      } else if (index == 1) {
+                        return helpCenterType(
+                            service: 'Centro de ayuda',
+                            icon: Icon(
+                              Icons.help_outlined,
+                              color: darkPeriwinkle,
+                              size: 80,
+                            ));
+                      } else if (index == 2) {
+                        return helpCenterType(
+                            service: 'Mis Productos',
+                            icon: Icon(
+                              Icons.production_quantity_limits_rounded,
+                              color: darkPeriwinkle,
+                              size: 80,
+                            ));
+                      } else {
+                        return helpCenterType(
+                            service: 'Especialistas',
+                            icon: Icon(
+                              Icons.healing_rounded,
+                              color: darkPeriwinkle,
+                              size: 80,
+                            ));
+                      }
                     }))
           ],
         ),

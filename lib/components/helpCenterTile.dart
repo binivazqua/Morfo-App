@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
 
 class helpCenterType extends StatelessWidget {
-  const helpCenterType({super.key});
+  final String service;
+  final Icon icon;
+  const helpCenterType({super.key, required this.service, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +12,19 @@ class helpCenterType extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: lilyPurple, borderRadius: BorderRadius.circular(10)),
+            color: Colors.grey[400], borderRadius: BorderRadius.circular(20)),
         child: Column(
-          children: [Text('Name')],
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            icon,
+            TextButton(
+              child: Text(
+                service,
+                style: TextStyle(color: draculaPurple),
+              ),
+              onPressed: () {},
+            ),
+          ],
         ),
       ),
     );
