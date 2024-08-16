@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:morflutter/components/helpCenterTile.dart';
 import 'package:morflutter/design/constants.dart';
 
 class UserProfilePage extends StatefulWidget {
@@ -66,7 +67,22 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       ))
                 ],
               ),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Centro de ayuda",
+              style: TextStyle(fontSize: 25),
+            ),
+            Expanded(
+                child: GridView.builder(
+                    itemCount: 4,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return helpCenterType();
+                    }))
           ],
         ),
       ),
