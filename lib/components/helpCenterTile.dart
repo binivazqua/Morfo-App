@@ -4,7 +4,12 @@ import 'package:morflutter/design/constants.dart';
 class helpCenterType extends StatelessWidget {
   final String service;
   final Icon icon;
-  const helpCenterType({super.key, required this.service, required this.icon});
+  final MaterialPageRoute goTo;
+  const helpCenterType(
+      {super.key,
+      required this.service,
+      required this.icon,
+      required this.goTo});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,9 @@ class helpCenterType extends StatelessWidget {
                 service,
                 style: TextStyle(color: draculaPurple),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, goTo);
+              },
             ),
           ],
         ),

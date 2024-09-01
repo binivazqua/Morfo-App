@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:morflutter/components/helpCenterTile.dart';
 import 'package:morflutter/design/constants.dart';
+import 'package:morflutter/starting_pages/aboutStateful.dart';
+import 'package:morflutter/starting_pages/ui/about.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
@@ -88,31 +90,42 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               Icons.info_rounded,
                               color: darkPeriwinkle,
                               size: 80,
-                            ));
+                            ),
+                            goTo: MaterialPageRoute(
+                                builder: (context) => AboutPage()));
                       } else if (index == 1) {
                         return helpCenterType(
-                            service: 'Centro de ayuda',
-                            icon: Icon(
-                              Icons.help_outlined,
-                              color: darkPeriwinkle,
-                              size: 80,
-                            ));
+                          service: 'Centro de ayuda',
+                          icon: Icon(
+                            Icons.help_outlined,
+                            color: darkPeriwinkle,
+                            size: 80,
+                          ),
+                          goTo: MaterialPageRoute(
+                              builder: (context) => AboutPage()),
+                        );
                       } else if (index == 2) {
                         return helpCenterType(
-                            service: 'Mis Productos',
-                            icon: Icon(
-                              Icons.production_quantity_limits_rounded,
-                              color: darkPeriwinkle,
-                              size: 80,
-                            ));
+                          service: 'Mis Productos',
+                          icon: Icon(
+                            Icons.production_quantity_limits_rounded,
+                            color: darkPeriwinkle,
+                            size: 80,
+                          ),
+                          goTo: MaterialPageRoute(
+                              builder: (context) => AboutPage()),
+                        );
                       } else {
                         return helpCenterType(
-                            service: 'Especialistas',
-                            icon: Icon(
-                              Icons.healing_rounded,
-                              color: darkPeriwinkle,
-                              size: 80,
-                            ));
+                          service: 'Especialistas',
+                          icon: Icon(
+                            Icons.healing_rounded,
+                            color: darkPeriwinkle,
+                            size: 80,
+                          ),
+                          goTo: MaterialPageRoute(
+                              builder: (context) => AboutPage()),
+                        );
                       }
                     }))
           ],
