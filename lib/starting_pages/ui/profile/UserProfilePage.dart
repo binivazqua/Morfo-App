@@ -89,7 +89,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             icon: Icon(
                               Icons.info_rounded,
                               color: darkPeriwinkle,
-                              size: 80,
+                              size: 50,
                             ),
                             goTo: MaterialPageRoute(
                                 builder: (context) => AboutPage()));
@@ -99,7 +99,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           icon: Icon(
                             Icons.help_outlined,
                             color: darkPeriwinkle,
-                            size: 80,
+                            size: 50,
                           ),
                           goTo: MaterialPageRoute(
                               builder: (context) => AboutPage()),
@@ -110,7 +110,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           icon: Icon(
                             Icons.production_quantity_limits_rounded,
                             color: darkPeriwinkle,
-                            size: 80,
+                            size: 50,
                           ),
                           goTo: MaterialPageRoute(
                               builder: (context) => AboutPage()),
@@ -121,7 +121,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           icon: Icon(
                             Icons.healing_rounded,
                             color: darkPeriwinkle,
-                            size: 80,
+                            size: 50,
                           ),
                           goTo: MaterialPageRoute(
                               builder: (context) => AboutPage()),

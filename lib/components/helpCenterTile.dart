@@ -17,15 +17,16 @@ class helpCenterType extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey[400], borderRadius: BorderRadius.circular(20)),
+            color: lilyPurple, borderRadius: BorderRadius.circular(20)),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon,
             TextButton(
               child: Text(
                 service,
-                style: TextStyle(color: draculaPurple),
+                style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
                 Navigator.push(context, goTo);
