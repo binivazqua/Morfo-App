@@ -1,6 +1,10 @@
 import 'dart:async'; // For Timer
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart'; // For the chart
-import 'package:flutter/material.dart'; // Flutter essentials
+import 'package:flutter/material.dart';
+import 'package:morflutter/design/constants.dart';
+import 'package:morflutter/display_info/databaseClass.dart'; // Flutter essentials
 
 class timerSendPage extends StatefulWidget {
   @override
@@ -8,6 +12,66 @@ class timerSendPage extends StatefulWidget {
 }
 
 class _timerSendPageState extends State<timerSendPage> {
+  /* ===================== DATABASE DATA FETCHING ================= */
+
+  final database = FirebaseDatabase.instance.ref();
+  User? newUser = FirebaseAuth.instance.currentUser;
+  List<MorfoData> sensorDataList = [];
+
+  /**
+   *  Initializes our app state so that it can read data in real time.
+   */
+  @override
+  void initState() {
+    super.initState();
+    FetchMorfoData();
+  }
+
+  /**
+   * _A method to fetch data from RTDB and only make use of the classes in our code.
+   */
+  void FetchMorfoData() {
+    String? userUID = newUser?.uid;
+    String path = '/sensorSim/${userUID}/';
+
+    database.child(path).onValue.listen((event) {
+      final data = event.snapshot.value as Map<dynamic, dynamic>;
+      List<MorfoData> tempList = [];
+
+      data.forEach((date, muscleData) {
+        if (muscleData is Map<dynamic, dynamic>) {
+          tempList.add(
+              MorfoData.fromMap(date, Map<String, dynamic>.from(muscleData)));
+        }
+      });
+
+      setState(() {
+        sensorDataList = tempList;
+      });
+    });
+  }
+
+  /* ========================================================= */
+
+  /* ================== GENERATE SPOTS FROM DATABASE ========================= */
+
+  List<FlSpot> _generateSpots() {
+    // Generate spots from Firebase RTDB data
+    List<FlSpot> spots = [];
+    int index = 0;
+
+    for (var sensorData in sensorDataList) {
+      for (var reading in sensorData.muscleData) {
+        spots.add(FlSpot(index.toDouble(), reading.value.toDouble()));
+        index++;
+      }
+    }
+
+    return spots;
+  }
+
+  /* ========================================================== */
+
   List<FlSpot> spots = [];
   bool isCollectingData = false;
   Timer? _timer;
@@ -25,29 +89,76 @@ class _timerSendPageState extends State<timerSendPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (!isCollectingData) // Only show this if not collecting data
+              if (!isCollectingData)
                 ElevatedButton(
                   onPressed: startDataCollection,
                   child: Text('Start Data Collection'),
                 ),
-              if (isCollectingData) // Show timer and data graph during collection
+              if (isCollectingData)
                 Column(
                   children: [
                     Text('Collecting data... $_remainingTime seconds left'),
                     SizedBox(height: 20),
                     AspectRatio(
                       aspectRatio: 1,
-                      child: LineChart(
-                        LineChartData(
-                          lineBarsData: [
-                            LineChartBarData(
-                              spots: spots,
-                              isCurved: true,
-                              color: Colors.blue,
+                      child: LineChart(LineChartData(
+                        backgroundColor: Colors.black,
+                        titlesData: FlTitlesData(
+                          show: true,
+                          rightTitles: AxisTitles(
+                            axisNameWidget: Text('Sensor data'),
+                            axisNameSize: 20,
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          bottomTitles: AxisTitles(
+                            axisNameSize: 50,
+                            axisNameWidget: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('TOMA 1'),
+                                Text('TOMA 2'),
+                                Text('TOMA 3'),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        lineBarsData: [
+                          LineChartBarData(
+                            color: Colors.amber,
+                            gradient: LinearGradient(colors: [
+                              morfoWhite,
+                              darkPeriwinkle,
+                              darkPeriwinkle,
+                            ]),
+                            isCurved: true,
+                            barWidth: 2,
+                            spots: _generateSpots(),
+                            dotData: FlDotData(
+                              show: true,
+                              getDotPainter: (FlSpot spot, double percent,
+                                  LineChartBarData barData, int index) {
+                                List<FlSpot> spots = barData.spots;
+
+                                if (spot.y == findMaxValue(spots)) {
+                                  return FlDotCirclePainter(
+                                    radius: 6,
+                                    color: Colors.blue,
+                                    strokeWidth: 2,
+                                    strokeColor: Colors.white,
+                                  );
+                                } else {
+                                  return FlDotCirclePainter(
+                                    radius: 4,
+                                    color: lilyPurple,
+                                    strokeWidth: 2,
+                                    strokeColor: Colors.white,
+                                  );
+                                }
+                              },
+                            ),
+                          )
+                        ],
+                      )),
                     ),
                   ],
                 ),
@@ -68,28 +179,17 @@ class _timerSendPageState extends State<timerSendPage> {
     setState(() {
       isCollectingData = true;
       _remainingTime = 10;
-      spots = []; // Clear previous data
+      spots = _generateSpots(); // Clear previous data and use new spots
     });
 
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         _remainingTime--;
-        _collectData(); // Collect data for 30 seconds
+
+        if (_remainingTime <= 0) {
+          stopDataCollection();
+        }
       });
-
-      if (_remainingTime <= 0) {
-        stopDataCollection();
-      }
-    });
-  }
-
-  void _collectData() {
-    // Simulate sensor data collection (replace this with actual data fetching logic)
-    double x = 30 - _remainingTime.toDouble();
-    double y = (x % 2 == 0) ? 2.0 : 1.0; // Simulated data points
-
-    setState(() {
-      spots.add(FlSpot(x, y));
     });
   }
 
@@ -99,7 +199,7 @@ class _timerSendPageState extends State<timerSendPage> {
       isCollectingData = false;
     });
 
-    // Optional: Notify user that data collection is done
+    // Notify user that data collection is done
     showMaxValueDialog(context, findMaxValue(spots));
   }
 
@@ -124,7 +224,6 @@ class _timerSendPageState extends State<timerSendPage> {
   }
 
   void showReportDialog(BuildContext context) {
-    // Implement logic to generate and display the report based on the collected data
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
