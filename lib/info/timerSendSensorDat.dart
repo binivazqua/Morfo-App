@@ -4,7 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart'; // For the chart
 import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
-import 'package:morflutter/display_info/databaseClass.dart'; // Flutter essentials
+import 'package:morflutter/display_info/databaseClass.dart';
+import 'package:morflutter/display_info/sensorData.dart'; // Flutter essentials
 
 class timerSendPage extends StatefulWidget {
   @override
@@ -18,18 +19,12 @@ class _timerSendPageState extends State<timerSendPage> {
   User? newUser = FirebaseAuth.instance.currentUser;
   List<MorfoData> sensorDataList = [];
 
-  /**
-   *  Initializes our app state so that it can read data in real time.
-   */
   @override
   void initState() {
     super.initState();
     FetchMorfoData();
   }
 
-  /**
-   * _A method to fetch data from RTDB and only make use of the classes in our code.
-   */
   void FetchMorfoData() {
     String? userUID = newUser?.uid;
     String path = '/sensorSim/${userUID}/';
@@ -51,12 +46,9 @@ class _timerSendPageState extends State<timerSendPage> {
     });
   }
 
-  /* ========================================================= */
-
   /* ================== GENERATE SPOTS FROM DATABASE ========================= */
 
   List<FlSpot> _generateSpots() {
-    // Generate spots from Firebase RTDB data
     List<FlSpot> spots = [];
     int index = 0;
 
@@ -70,7 +62,7 @@ class _timerSendPageState extends State<timerSendPage> {
     return spots;
   }
 
-  /* ========================================================== */
+  /* ================== TIMER AND CHART DISPLAY ========================= */
 
   List<FlSpot> spots = [];
   bool isCollectingData = false;
@@ -165,7 +157,10 @@ class _timerSendPageState extends State<timerSendPage> {
               SizedBox(height: 20),
               if (!isCollectingData && spots.isNotEmpty)
                 ElevatedButton(
-                  onPressed: () => showReportDialog(context),
+                  onPressed: () {
+                    Navigator.pop(context,
+                        MaterialPageRoute(builder: (context) => dataVis()));
+                  },
                   child: Text('Generate Report'),
                 ),
             ],
@@ -228,7 +223,24 @@ class _timerSendPageState extends State<timerSendPage> {
       context: context,
       builder: (_) => AlertDialog(
         title: Text('Sensor Data Report'),
-        content: Text('Report: ${spots.length} data points collected.'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Report: ${spots.length} data points collected.'),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: spots.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    'Point $index: X=${spots[index].x}, Y=${spots[index].y}',
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
