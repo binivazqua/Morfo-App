@@ -119,7 +119,7 @@ class _dataVisState extends State<dataVis> {
   /* ================== CUSTOM FUNCTION FOR DATA VISUALIZATION ===================== */
 
   String customCheck(List<FlSpot> spots, int index) {
-    if (spots[index].y < 98) {
+    if (spots[index].y < 750) {
       return "IS FALSE"; // no valido
     }
 
@@ -184,7 +184,7 @@ class _dataVisState extends State<dataVis> {
   Widget build(BuildContext context) {
     // Generate spots from the sensor data
     List<FlSpot> spots = _generateSpots();
-
+    /*
     // Find the maximum value
     double maxValue = findMaxValue(spots);
 
@@ -192,6 +192,7 @@ class _dataVisState extends State<dataVis> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showMaxValueDialog(context, maxValue);
     });
+    */
     return Scaffold(
       appBar: AppBar(
         foregroundColor: lilyPurple,

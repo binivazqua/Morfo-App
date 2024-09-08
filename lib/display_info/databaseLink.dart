@@ -114,6 +114,17 @@ class _databaseReadTestState extends State<databaseReadTest> {
                   icon: Icon(
                     Icons.graphic_eq,
                     color: draculaPurple,
+                  ))),
+          Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => dataVis()));
+                  },
+                  icon: Icon(
+                    Icons.graphic_eq,
+                    color: draculaPurple,
                   )))
         ],
       ),
