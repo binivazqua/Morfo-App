@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/display_info/databaseClass.dart';
 import 'package:morflutter/display_info/sensorData.dart';
+import 'package:morflutter/info/timerSendSensorDat.dart';
 
 class databaseReadTest extends StatefulWidget {
   const databaseReadTest({super.key});
@@ -119,11 +120,13 @@ class _databaseReadTestState extends State<databaseReadTest> {
               padding: const EdgeInsets.only(right: 10),
               child: IconButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => dataVis()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => timerSendPage()));
                   },
                   icon: Icon(
-                    Icons.graphic_eq,
+                    Icons.timer,
                     color: draculaPurple,
                   )))
         ],
