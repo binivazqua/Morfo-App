@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/display_info/databaseClass.dart';
 import 'package:morflutter/starting_pages/ui/homepage.dart';
@@ -118,21 +119,17 @@ class _dataVisState extends State<dataVis> {
   /* ================== CUSTOM FUNCTION FOR DATA VISUALIZATION ===================== */
 
   String customCheck(List<FlSpot> spots, int index) {
-    // Case 1: Check if the value is negative
     if (spots[index].y < 98) {
-      return "IS FALSE"; // Negative value detected
+      return "IS FALSE"; // no valido
     }
 
-    // Case 2: Check for values within a threshold of 10 units over 3 consecutive spots
-    const int consecutiveCount = 2; // Number of consecutive spots to check
-    const double threshold = 10.0; // Threshold of 10 units difference
-    const double max_value = 10.0; // Threshold of 10 units difference
+    const int tconsec = 2;
+    const double threshold = 10.0;
 
-    if (index >= consecutiveCount - 1) {
+    if (index >= tconsec - 1) {
       bool isWithinThreshold = true;
 
-      // Compare the current spot with the previous consecutive spots
-      for (int i = 1; i < consecutiveCount; i++) {
+      for (int i = 1; i < tconsec; i++) {
         double diff = (spots[index - i].y - spots[index].y).abs();
         if (diff > threshold) {
           isWithinThreshold = false;
@@ -141,12 +138,47 @@ class _dataVisState extends State<dataVis> {
       }
 
       if (isWithinThreshold) {
-        return "WITHIN THRESHOLD"; // Values are within the 10-unit threshold for consecutive spots
+        return "WITHIN THRESHOLD"; // en 10 o menos
       }
     }
 
-    return "OUT OF THRESHOLD"; // No special case detected
+    return "OUT OF THRESHOLD"; // equis
   }
+
+  double findMaxValue(List<FlSpot> spots) {
+    double maxValue = spots[0].y; // primero es max
+    // Iterate
+    for (FlSpot spot in spots) {
+      if (spot.y > maxValue) {
+        maxValue = spot.y; // Update maxValue if a higher value is found
+      }
+    }
+
+    return maxValue; // Return the maximum value found
+  }
+
+  /* ====================================================== */
+  /* ====================== MAX VALUE NOTIFIER ==================== */
+  void showMaxValueDialog(BuildContext context, double maxValue) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Maximum Value Found"),
+          content: Text("The maximum value is: $maxValue"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+/* ================================================================= */
 
   @override
   Widget build(BuildContext context) {
@@ -230,7 +262,16 @@ class _dataVisState extends State<dataVis> {
                                 barData.spots; // Access all spots
 
                             // Use the custom check to determine the color
-                            if (customCheck(spots, index) == "IS FALSE") {
+                            if (spot.y == findMaxValue(spots)) {
+                              return FlDotCirclePainter(
+                                radius: 6,
+                                color: Colors
+                                    .blue, // Custom condition met (constant value or negative value)
+                                strokeWidth: 2,
+                                strokeColor: Colors.white,
+                              );
+                            } else if (customCheck(spots, index) ==
+                                "IS FALSE") {
                               return FlDotCirclePainter(
                                 radius: 4,
                                 color: Colors
