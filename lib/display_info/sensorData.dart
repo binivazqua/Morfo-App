@@ -182,6 +182,16 @@ class _dataVisState extends State<dataVis> {
 
   @override
   Widget build(BuildContext context) {
+    // Generate spots from the sensor data
+    List<FlSpot> spots = _generateSpots();
+
+    // Find the maximum value
+    double maxValue = findMaxValue(spots);
+
+    // Show the dialog after the frame has been rendered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showMaxValueDialog(context, maxValue);
+    });
     return Scaffold(
       appBar: AppBar(
         foregroundColor: lilyPurple,
