@@ -165,11 +165,120 @@ class _databaseReadTestState extends State<databaseReadTest> {
                           snapshot.data!.snapshot.value as Map);
                       List<MorfoData> sensorDataList = [];
 
+                      // Parsing the data from the database
                       data.forEach((date, muscleData) {
                         if (muscleData is Map<dynamic, dynamic>) {
                           sensorDataList.add(MorfoData.fromMap(
                               date, Map<String, dynamic>.from(muscleData)));
                         }
+                      });
+
+                      // Sorting the list by date chronologically
+                      sensorDataList.sort((a, b) {
+                        DateTime dateA = DateTime.parse(a
+                            .time); // Assuming 'time' is in ISO 8601 or similar format
+                        DateTime dateB = DateTime.parse(b.time);
+                        return dateA.compareTo(
+                            dateB); // For ascending order (oldest first)
+                      });
+
+                      // Grouping data by day (yyyy-MM-dd)
+                      Map<String, List<MorfoData>> groupedData = {};
+                      for (var sensorData in sensorDataList) {
+                        DateTime date = DateTime.parse(sensorData.time);
+                        String day =
+                            '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+
+                        if (groupedData[day] == null) {
+                          groupedData[day] = [];
+                        }
+                        groupedData[day]!.add(sensorData);
+                      }
+
+                      return SingleChildScrollView(
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: groupedData.entries.map((entry) {
+                            String day = entry.key;
+                            List<MorfoData> readings = entry.value;
+
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 8.0),
+                              padding: EdgeInsets.all(12.0),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    day,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Column(
+                                    children: readings.map((sensorData) {
+                                      return ListTile(
+                                        title: Text(
+                                          sensorData.time,
+                                          style: TextStyle(
+                                            fontFamily: 'Lausane650',
+                                            color: darkPeriwinkle,
+                                          ),
+                                        ),
+                                        subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: sensorData.muscleData
+                                              .map((reading) {
+                                            return Text(
+                                                '${reading.muscle}: ${reading.value}');
+                                          }).toList(),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      );
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+
+/*
+                StreamBuilder(
+                  stream: database.child(path).onValue,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.data!.snapshot.value != null) {
+                      final data = Map<String, dynamic>.from(
+                          snapshot.data!.snapshot.value as Map);
+                      List<MorfoData> sensorDataList = [];
+
+                      data.forEach((date, muscleData) {
+                        if (muscleData is Map<dynamic, dynamic>) {
+                          sensorDataList.add(MorfoData.fromMap(
+                              date, Map<String, dynamic>.from(muscleData)));
+                        }
+                      });
+
+                      // Sorting the list by date chronologically
+                      sensorDataList.sort((a, b) {
+                        DateTime dateA = DateTime.parse(a
+                            .time); // Assuming 'time' is in ISO 8601 or similar format
+                        DateTime dateB = DateTime.parse(b.time);
+                        return dateA.compareTo(
+                            dateB); // For ascending order (oldest first)
                       });
 
                       return ListView.builder(
@@ -201,6 +310,8 @@ class _databaseReadTestState extends State<databaseReadTest> {
                     }
                   },
                 ),
+
+                */
                 ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(lilyPurple)),
