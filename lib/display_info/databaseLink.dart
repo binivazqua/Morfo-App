@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/display_info/databaseClass.dart';
+import 'package:morflutter/display_info/databaseGrouped.dart';
 import 'package:morflutter/display_info/sensorData.dart';
 import 'package:morflutter/info/timerSendSensorDat.dart';
 
@@ -110,7 +111,7 @@ class _databaseReadTestState extends State<databaseReadTest> {
               child: IconButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => dataVis()));
+                        MaterialPageRoute(builder: (context) => dataGrouped()));
                   },
                   icon: Icon(
                     Icons.graphic_eq,
