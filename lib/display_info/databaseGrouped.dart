@@ -90,7 +90,7 @@ class _dataGroupedState extends State<dataGrouped> {
               ),
               SizedBox(height: 20),
               Text(
-                'EMG Sensor Data by Day',
+                'Historial de lecturas',
                 style: TextStyle(
                   fontSize: 18,
                   color: darkPeriwinkle,
@@ -110,10 +110,10 @@ class _dataGroupedState extends State<dataGrouped> {
                     return Column(
                       children: [
                         Text(
-                          "Data for Day: $day",
+                          "Telemetría de: ${day}",
                           style: TextStyle(
                             fontSize: 16,
-                            color: darkPeriwinkle,
+                            color: draculaPurple,
                           ),
                         ),
                         AspectRatio(
