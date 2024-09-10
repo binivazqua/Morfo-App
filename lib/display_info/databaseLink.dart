@@ -109,27 +109,11 @@ class _databaseReadTestState extends State<databaseReadTest> {
           Padding(
               padding: const EdgeInsets.only(right: 10),
               child: IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => dataGrouped()));
-                  },
+                  onPressed: LogOut,
                   icon: Icon(
-                    Icons.graphic_eq,
+                    Icons.logout_outlined,
                     color: draculaPurple,
                   ))),
-          Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => timerSendPage()));
-                  },
-                  icon: Icon(
-                    Icons.timer,
-                    color: draculaPurple,
-                  )))
         ],
       ),
       body: Center(
@@ -156,7 +140,47 @@ class _databaseReadTestState extends State<databaseReadTest> {
                 /**
                  * USING A STREAM BUILDER AS AN EVENT LISTENER:
                  */
-
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => timerSendPage()));
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.timer),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('Empezar')
+                          ],
+                        )),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => dataGrouped()));
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.graphic_eq),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('Telemetría')
+                          ],
+                        )),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 StreamBuilder(
                   stream: database.child(path).onValue,
                   builder: (context, snapshot) {
@@ -196,59 +220,57 @@ class _databaseReadTestState extends State<databaseReadTest> {
                         groupedData[day]!.add(sensorData);
                       }
 
-                      return SingleChildScrollView(
-                        child: ListView(
-                          shrinkWrap: true,
-                          children: groupedData.entries.map((entry) {
-                            String day = entry.key;
-                            List<MorfoData> readings = entry.value;
+                      return ListView(
+                        shrinkWrap: true,
+                        children: groupedData.entries.map((entry) {
+                          String day = entry.key;
+                          List<MorfoData> readings = entry.value;
 
-                            return Container(
-                              margin: EdgeInsets.symmetric(vertical: 8.0),
-                              padding: EdgeInsets.all(12.0),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    day,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
+                          return Container(
+                            margin: EdgeInsets.symmetric(vertical: 8.0),
+                            padding: EdgeInsets.all(12.0),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  day,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
                                   ),
-                                  SizedBox(height: 10),
-                                  Column(
-                                    children: readings.map((sensorData) {
-                                      return ListTile(
-                                        title: Text(
-                                          sensorData.time,
-                                          style: TextStyle(
-                                            fontFamily: 'Lausane650',
-                                            color: darkPeriwinkle,
-                                          ),
+                                ),
+                                SizedBox(height: 10),
+                                Column(
+                                  children: readings.map((sensorData) {
+                                    return ListTile(
+                                      title: Text(
+                                        sensorData.time,
+                                        style: TextStyle(
+                                          fontFamily: 'Lausane650',
+                                          color: darkPeriwinkle,
                                         ),
-                                        subtitle: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: sensorData.muscleData
-                                              .map((reading) {
-                                            return Text(
-                                                '${reading.muscle}: ${reading.value}');
-                                          }).toList(),
-                                        ),
-                                      );
-                                    }).toList(),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
-                        ),
+                                      ),
+                                      subtitle: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: sensorData.muscleData
+                                            .map((reading) {
+                                          return Text(
+                                              '${reading.muscle}: ${reading.value}');
+                                        }).toList(),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ],
+                            ),
+                          );
+                        }).toList(),
                       );
                     } else {
                       return Center(child: CircularProgressIndicator());
