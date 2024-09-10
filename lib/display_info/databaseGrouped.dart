@@ -76,7 +76,10 @@ class _dataGroupedState extends State<dataGrouped> {
       appBar: AppBar(
         foregroundColor: lilyPurple,
         backgroundColor: draculaPurple,
-        title: Text("Sensor Data Visualization"),
+        title: Image(
+            width: 120,
+            image: AssetImage(
+                'lib/design/logos/principal_morado_negro-removebg-preview.png')),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -124,7 +127,7 @@ class _dataGroupedState extends State<dataGrouped> {
                               titlesData: FlTitlesData(
                                 show: true,
                                 bottomTitles: AxisTitles(
-                                  axisNameWidget: Text('Readings for $day'),
+                                  axisNameWidget: Text('Lapso de prueba (30s)'),
                                   axisNameSize: 20,
                                 ),
                               ),
