@@ -3,6 +3,7 @@ import 'package:morflutter/components/helpCenterTile.dart';
 import 'package:morflutter/design/constants.dart';
 import 'package:morflutter/starting_pages/aboutStateful.dart';
 import 'package:morflutter/starting_pages/ui/about.dart';
+import 'package:morflutter/starting_pages/ui/profile/helpCenter.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
@@ -102,7 +103,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             size: 50,
                           ),
                           goTo: MaterialPageRoute(
-                              builder: (context) => AboutPage()),
+                              builder: (context) => helpCenterPage()),
                         );
                       } else if (index == 2) {
                         return helpCenterType(
