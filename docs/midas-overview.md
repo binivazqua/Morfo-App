@@ -1,7 +1,7 @@
+
+![Overview](../overview.png)
+
 # Overview
-
-![Overview](2.png)
-
 
 **Midas** is a transradial prosthetic made from **carbon** fiber, designed for enhanced durability, precision, and ease of use. This is the third version of Midas, originally created as a customized prototype for *Samaria Méndez*, a high school student at Prepa Tec Campus Puebla. The prosthetic was tailored to her needs through a combination of 3D printing and carbon fiber molding.
 
