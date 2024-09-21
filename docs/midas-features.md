@@ -1,3 +1,5 @@
+
+![KEY FEATURES](../key-features.png)
 # Midas Prosthetic Arm - Key Features
 
 🦾 **Carbon Fiber Construction:** Lightweight yet durable, ensuring structural integrity and user comfort.
