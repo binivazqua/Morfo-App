@@ -11,6 +11,17 @@ Midas is our transradial, modular, fiber carbon based prosthetic that allows our
 * Contract and extend finger articulations precisely.
 * Rotate and deattach the wrist smoothly.
 
+## Midas Prosthetic Arm Documentation
+
+Below you'll find detailed information divided into several sections.
+
+- [Overview and Construction](./docs/midas-overview.md)
+- [Electronics and Signal Processing](./docs/midas-electronics.md)
+- [Communication Protocol](.docs/midas-com.md)
+- [Key Features](./docs/midas-features.md)
+- [Future Developments](./docs/midas-future.md)
+
+
 
 # Morfo-App
 > Built to have no limits.
