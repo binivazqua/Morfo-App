@@ -3,6 +3,8 @@
 We are a Mexican bionic prosthetic startup that aims to empower those who have suffered the loss of an upper limb, and give them access to an accessible, inclusive, functional device to dignifiedly engage and/or rehabilitate in a society that has labeled them as  *handicapped* .
 
 # Midas
+
+![Midas](midasCover.png)
 Midas is our transradial, modular, fiber carbon based prosthetic that allows our users to:
 
 * Carry objects up to 4kg.
