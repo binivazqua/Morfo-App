@@ -1,5 +1,5 @@
 
-![Electronics](../)
+![Electronics](../electronics.png)
 # Midas Prosthetic Arm – Electronics and Signal Processing
 
 ## Components
