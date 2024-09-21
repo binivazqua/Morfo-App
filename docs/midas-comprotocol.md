@@ -1,3 +1,6 @@
+
+![COM PROTOCOL](../comprotocol.png)
+
 # Communication protocol
 
 After filtering, the XIAO ESP32 sends the processed signals to two separate destinations:
