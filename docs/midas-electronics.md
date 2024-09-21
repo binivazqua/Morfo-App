@@ -1,3 +1,5 @@
+
+![Electronics](../)
 # Midas Prosthetic Arm – Electronics and Signal Processing
 
 ## Components
