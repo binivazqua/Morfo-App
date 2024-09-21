@@ -19,4 +19,4 @@ The Arduino Uno is responsible for processing analog signals received from the A
 These signals are then passed on to the first XIAO ESP32, located within the arm. This microcontroller applies a secondary filtering process to the signals, analyzing their intensity and duration to determine the user’s intent.
 
 
-[Next: Key Features 🦾](./midas-features.md)
+[Next: Comm protocol 🛜](./midas-comprotocol.md)
