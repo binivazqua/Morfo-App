@@ -9,3 +9,4 @@ After filtering, the XIAO ESP32 sends the processed signals to two separate dest
 
 * 🖐🏻 **Control of finger movement:** The signals are also sent to the second **XIAO ESP32**, located in the hand section of the prosthetic. This board directly controls the servomotors responsible for moving each finger, allowing precise contraction and extension movements based on the user's muscle input.
   
+[Next: Key Features 🦾](./midas-features.md)
