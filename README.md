@@ -17,7 +17,7 @@ Below you'll find detailed information divided into several sections.
 
 - [Overview and Construction](./docs/midas-overview.md)
 - [Electronics and Signal Processing](./docs/midas-electronics.md)
-- [Communication Protocol](.docs/midas-com.md)
+- [Communication Protocol](.docs/midas-comprotocol.md)
 - [Key Features](./docs/midas-features.md)
 - [Future Developments](./docs/midas-future.md)
 
