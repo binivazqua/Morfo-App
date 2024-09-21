@@ -13,7 +13,7 @@ Midas is our transradial, modular, fiber carbon based prosthetic that allows our
 # Morfo-App
 > Built to have no limits.
 
-[![About](https://www.youtube.com/watch?v=wK2HVb4P8rs)](https://www.youtube.com/embed/wK2HVb4P8rs?si=O6GH8kx1FxxZCjmO)
+[![About](coverMorfoApp.png)](https://www.youtube.com/watch?v=wK2HVb4P8rs)
 
 ## Main Objective
 The app is designed to support patients in their rehabilitation process. By strengthening brain-muscle coordination, our users enhance control over the prosthesis we developed, equipped with electromyographic sensors.
