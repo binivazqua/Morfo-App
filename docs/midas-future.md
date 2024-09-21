@@ -1,3 +1,5 @@
+![Our Future](../ourfuture.png)
+
 # Midas Prosthetic Arm - Future Development
 
 Midas has the potential for further enhancements, including:
