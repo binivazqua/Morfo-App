@@ -13,3 +13,5 @@
 🛜**Wi-Fi Enabled Telemetry:** Connects to the Morfo app for real-time data monitoring and patient feedback.
 
 🖐🏻**Precise Finger Movement:** Controlled by servomotors, allowing accurate and responsive control.
+
+[Next: Midas' Future 🔜](./midas-future.md)
