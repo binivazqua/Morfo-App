@@ -8,3 +8,4 @@
 ## Construction Details
 The prosthetic features a **3D-printed fist and fingers** in a standard size, covered with a layer of carbon fiber for durability. The arm is designed with **two compartments**, controlled by **servomotors**, which allow easy access to the internal electronics.
 
+[Next: Electronics 🔋](./midas-electronics.md)
