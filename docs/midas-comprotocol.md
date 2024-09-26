@@ -1,5 +1,5 @@
 
-![COM PROTOCOL](../comprotocol.png)
+![COM PROTOCOL](../comprotocol2.jpg)
 
 # Communication protocol
 
